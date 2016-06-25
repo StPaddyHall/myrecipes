@@ -1,6 +1,11 @@
 class Recipe < ActiveRecord::Base
     belongs_to :chef
     has_many :likes
+    # Many to Many relationship
+    has_many :recipe_styles
+    has_many :styles, through: :recipe_styles
+    has_many :recipe_ingredients
+    has_many :ingredients, through: :recipe_ingredients
     # Validate the name field and enforce that the presence is true (i.e. you have to enter something)
     validates :chef_id, presence: true
     validates :name, presence: true, length: { minimum: 5, maximum: 100 }
