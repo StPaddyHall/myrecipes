@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   
   # Adding an exception to customise the route
-  resources :chefs, except: [:new]
+  resources :chefs, except: [:new, :destroy]
   
   # Assign a custom URL for the new action
   get '/register', to: 'chefs#new'
